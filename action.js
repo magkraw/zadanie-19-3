@@ -1,35 +1,45 @@
+import uuid from uuid;
+
 const ADD_COMMENT = 'ADD_COMMENT';
-
-{
-    type: ADD_COMMENT,
-    text: 'My first comment !'
-}
-
 const REMOVE_COMMENT = 'REMOVE_COMMENT';
-
-{
-  type: REMOVE_COMMENT,
-  id: 20
-}
-
 const EDIT_COMMENT = 'EDIT_COMMENT';
-
-{
-  type: EDIT_COMMENT,
-  id: 20,
-  text: 'wyedytowany tekst komentarza'
-}
-
 const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
+const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
+const DELETE_COMMENT = 'DELETE_COMMENT';
 
-{
-  type: THUMB_UP_COMMENT,
-  id: 20
+function addComment(text) {
+    return {
+        type: ADD_COMMENT,
+        text,
+        id: uuid.v4()
+    }
 }
 
-const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
+function editComment(text, id) {
+    return {
+        type: EDIT_COMMENT,
+        text,
+        id
+    }
+}
 
-{
-  type: THUMB_DOWN_COMMENT,
-  id: 20
+function thumbUpComment(id) {
+    return {
+        type: THUMB_UP_COMMENT,
+        id
+    }
+}
+
+function thumbDownComment(id) {
+    return {
+        type: THUMB_DOWN_COMMENT,
+        id
+    }
+}
+
+function deleteComment(id) {
+    return {
+        type: DELETE_COMMENT,
+        id
+    }
 }
